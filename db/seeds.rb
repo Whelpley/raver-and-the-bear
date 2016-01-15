@@ -13,11 +13,38 @@ User.create(
   password: 'password'
   )
 
+# The (5) tracks
+# (currently no ability for user to create tracks)
+
+Track.create(
+  title: 'Booing Boom Tschak',
+  artist: 'Kraftwerk',
+  # this is a hard one
+  beats: 'BOING BOOM TSCHAK PING'
+  )
+
+Track.create(
+  title: 'Boots and Cats',
+  artist: 'DJ C&E',
+  beats: 'BootsandCatsandBOOTSandCats,'
+  )
+
 Track.create(
   title: 'Sandstorm',
   artist: 'Darude',
-  # this is a hard one
-  beats: 'DuuuuuuuuDUDuDUDuDUDuDUDuDuuuDU'
+  beats: 'DuuuuuuuuDUDuDUDuDUDuDUDuDuuuDU,'
+  )
+
+Track.create(
+  title: 'Dub Step Concerto #5',
+  artist: 'Skrillex',
+  beats: 'WUB wub WUB WUUUUUUUUUBBBBB'
+  )
+
+Track.create(
+  title: 'Duckface',
+  artist: 'Ephwerd',
+  beats: "Don\'t snapchat that duckface"
   )
 
 game = Game.new(
