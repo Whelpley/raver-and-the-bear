@@ -8,7 +8,7 @@ get '/' do
   # if session[:id]
   #   redirect '/restaurants'
   # else
-    erb :derp
+    erb :default
   # end
 
   # Where to redirect?

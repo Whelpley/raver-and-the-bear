@@ -1,10 +1,12 @@
-/* Palette Guide:
+/* Palette Guide: Forest theme
 Tan - #d8caa8
 Light Green - #5c832f
 Green - #284907
 Brown - #382513
 Blue-Gray - #363942
 */
+
+/*Dev-status formatting: ugly, obvious borders and margins around each section*/
 
 /*all of body*/
 body {
@@ -19,7 +21,6 @@ body {
 header {
   border: 2px dashed #363942;
   margin: 2px;
-
 }
 
 /*navigation bar ( within header)*/
@@ -41,11 +42,15 @@ nav {
   margin: 2px;
 }
 
+.error-message {
+  border: 2px dotted purple;
+  margin: 2px;
+}
+
 /*where all those erbs appear*/
 #erb-box {
   border: 2px dashed #284907;
   margin: 2px;
-
 }
 
 footer {

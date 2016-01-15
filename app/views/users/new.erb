@@ -5,19 +5,22 @@
 
 <div id="new_user_form">
 
+<div class='error-message'>
 <h3><%= @error_message if @error_message %></h3>
+</div>
 
 <h1>New User Registration</h1>
 
+<!-- legacy code in form, do not understand it all, but I should - remove this when I get it all -->
 <form method="post" action="/users">
 <input type="hidden" name="_method" value="post">
   <label for="user_email_input">
   <input id="user_email_input" name="email" type="text" placeholder="Email" required title="Please enter a valid email address.">
   <br>
   <label for="user_password_input">
-  <input id="user_password_input" name="password" type="password" placeholder="Password" pattern=".{5,15}" required title="Please enter a password between 5 and 15 characters.">
+  <input id="user_password_input" name="password" type="password" placeholder="Password" pattern=".{5,15}" required title="Please enter a password between 5 and 15 characters. Do not enter a real passowrd, as it is currently un-encrypted.">
   <br>
-  <input type="submit" value="Create a new user!">
+  <input type="submit" value="Create a new player, player!">
 </form>
 
 </div>
