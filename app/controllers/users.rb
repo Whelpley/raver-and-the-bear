@@ -1,3 +1,4 @@
+
 #GET list of all users
 # not needed
 get '/users' do
@@ -5,34 +6,34 @@ end
 
 # GET form to create new user
 get '/users/new' do
-# if logged in, go to user profile
-  if session[:id]
-    @user = User.find(session[:id])
-    redirect "/users/#{@user.id}"
-# otherwise show the form
-  else
-    erb :'users/new'
-  end
+# # if logged in, go to user profile
+#   if session[:id]
+#     @user = User.find(session[:id])
+#     redirect "/users/#{@user.id}"
+# # otherwise show the form
+#   else
+#     erb :'users/new'
+#   end
 end
 
 # CREATE new user
-# coming here from a form on erb :users/new
+# coming here from incoming form on erb :users/new
 post '/users' do
 # create new user
 # not bothering with password encrytion for now
-  @user = User.new(email: params[:email], password: params[:password])
-# check if successful save
-  if @user.save
-    # Log in new user
-    session[:id] = @user.id
-    # redirect to user profile
-    redirect '/'
-# otherwise load error message, back to reg form
-  else
-    session.delete(:id)
-    @error_message = "Sorry, but that email has already been taken."
-    erb :'users/new'
-  end
+#   @user = User.new(email: params[:email], password: params[:password])
+# # check if successful save
+#   if @user.save
+#     # Log in new user
+#     session[:id] = @user.id
+#     # redirect to user profile
+#     redirect '/'
+# # otherwise load error message, back to reg form
+#   else
+#     session.delete(:id)
+#     @error_message = "Sorry, but that email has already been taken."
+#     erb :'users/new'
+#   end
 end
 
 
