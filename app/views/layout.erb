@@ -11,25 +11,14 @@
 
   <title>The Raver and the Bear</title>
 
-  <link rel="icon" type="image/jpg" href="imgs/doge_favicon.jpg">
+  <link rel="icon" type="image/jpg" href='doge_favicon.jpg'>
 </head>
 
 <body>
 
   <header>
     <h1>The Raver and the Bear</h1>
-    <!-- this should be a list -->
-    <!-- button to create new user -->
-    <!-- make things go invisible after login -->
-    <% unless session[:id] %>
-    <div id='reg_link'>
-      <a href='/users/new'>Register</a>
-    </div>
-    <div id='login_link'>
-      <!-- link to page with login form -->
-      <a href='/sessions/new'>Log in</a>
-    </div>
-    <% end %>
+
 
 <!-- make this only appear when user logged in -->
     <% if session[:id] %>
@@ -40,26 +29,39 @@
 
     <nav>
       <ul>
-        <li>Navigation</li>
-        <li>Links</li>
-        <li>Go</li>
-        <li>Here</li>
+<!-- Links that show all the time -->
+        <li><a href='/'>Home</a></li>
+<!-- Links that show only if Not logged in -->
+        <% unless session[:id] %>
+          <li>You are not logged in</li>
+          <li><a href='/users/new'>Register</a></li>
+          <li><a href='/sessions/new'>Log in</a></li>
+        <% end %>
+<!-- Links that show only If logged in -->
+        <% if session[:id] %>
+          <li>You are logged in, ____</li>
+          <li><a href='/logout'>Log Out</a></li>
+        <% end %>
       </ul>
     </nav>
 
   </header>
 
-<!-- welcome message, if logged in -->
-<!-- also: new restuarant link -->
+<!-- things that happen only if logged in: -->
+<!-- Welcome message -->
     <% if session[:id] %>
-    <div id='welcome message'>
+    <div class='logged-in'>
       <p>Welcome, <%= User.find(session[:id]).email %>!</p>
     </div>
     <% end %>
 
-  <div id='erb_box'>
+  <div id='erb-box'>
     <%= yield %>
   </div>
+
+  <footer>
+    <p>Questions? Comments? Concerns? <a href="mailto:whelpley@gmail.com">Email me</a></p>
+  </footer>
 
 </body>
 
