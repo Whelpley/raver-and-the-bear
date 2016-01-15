@@ -1,0 +1,30 @@
+<!-- Form to create new restaurant -->
+<!-- sends to '/restaurants' via Post -->
+
+<!-- Currently converting the user reg form to this purpose -->
+
+<div id="new_restaurant_form">
+
+<h3><%= @error_message if @error_message %></h3>
+
+<h1>Tell us about a restaurant you like!</h1>
+
+<form method="post" action="/restaurants">
+<input type="hidden" name="_method" value="post">
+  Name of restaurant:<br>
+  <input type="text" name="name"><br>
+  Type of cuisine:<br>
+  <input type="text" name="cuisine"><br>
+  Address:<br>
+  <input type="text" name="address"><br>
+  City:<br>
+  <input type="text" name="city"><br>
+  <!-- need to add validation or formatting for state -->
+  State:<br>
+  <input type="text" name="state"><br>
+  Zip Code:<br>
+  <input type="text" name="zip"><br>
+  <input type="submit" value="Submit a new restaurant!">
+</form>
+
+</div>
