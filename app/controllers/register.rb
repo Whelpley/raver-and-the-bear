@@ -1,4 +1,5 @@
 # NOT ACTIVE CODE
+# maybe useful?
 
 # get '/users/new' do
 #   if session[:user_id]
