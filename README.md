@@ -36,6 +36,7 @@ TO DO:
 Later project stages:
 (cut and paste up as done)
 
+-write text for views - keep main GameText file
 -flesh out basic Views
 -New user registration & login
 -Log in/out
