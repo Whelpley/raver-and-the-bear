@@ -1,0 +1,44 @@
+<!-- PAGE NEEDS REVIEW - yes, I am reusing code! -->
+
+<div class="container">
+  <br>
+  <form action="/sessions" method="POST">
+  <fieldset>
+
+  <!-- Form Name -->
+  <legend>User Login</legend>
+  <!-- takes optional var @error to relay error msg -->
+  <% if @error %>
+    <div class="errors-wrapper">
+      <span>Login failed:</span>
+      <ul class="errors">
+        <li class="error"><%= @error %></li>
+      </ul>
+    </div>
+  <% end %>
+  <!-- Text input-->
+  <div >
+    <label for="email">Email Address</label>
+    <div >
+    <input id="email" name="email" type="email" required="">
+    </div>
+  </div>
+  <br>
+  <!-- Password input-->
+  <div >
+    <label  for="password_plaintext">Password</label>
+    <div >
+      <input id="password_plaintext" name="password_plaintext" type="password" placeholder="" class="form-control input-md" required="">
+    </div>
+  </div>
+  <br>
+  <!-- Button -->
+  <div >
+    <label  for="register"></label>
+    <div >
+      <button id="login" name="login" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+  </fieldset>
+  </form>
+</div>
