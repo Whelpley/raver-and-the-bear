@@ -26,10 +26,11 @@ DONE:
 1/15/16
 -seed file with (text) tracks
 -mark up Layout page with CSS for dev (borders!)
+-New user registration & login
 
 DOING:
 
--New user registration
+-User password authentication
 
 TO DO:
 
@@ -38,7 +39,6 @@ Later project stages:
 
 -write text for views - keep main GameText file
 -flesh out basic Views
--New user registration & login
 -Log in/out
 
 

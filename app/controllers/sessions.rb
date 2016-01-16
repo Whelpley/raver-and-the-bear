@@ -17,10 +17,10 @@ end
 # Incoming params - :email, :password_plaintext
 post '/sessions' do
   @user = User.find_by email: params[:email]
-  # this does not even check the password!
+  # testing out password check!
   # lets in if the email exists
   # gotta update this !!!!
-  if @user
+  if @user && user.password == (params[:password])
     session[:id] = @user.id
     # go to user's stats page
     redirect "/users/#{@user.id}"

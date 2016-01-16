@@ -21,11 +21,10 @@ end
 # coming here from incoming form on erb :users/new
 post '/users' do
 # create new user
-# not bothering with password encrytion for now
-  @user = User.new(
-    email: params[:email],
-    password: params[:password]
-    )
+  @user = User.new(email: params[:email])
+# set hashed password with BCrypt - don't really get why right now
+  @user.password = params[:password]
+
 # check if successful save
   if @user.save
     # Log in new user
@@ -34,6 +33,7 @@ post '/users' do
     redirect "users/#{session[:id]}"
 # otherwise load error message, back to reg form
   else
+# just-in case session logout
     session.delete(:id)
     @error_message = "Sorry, but that email has already been taken."
     erb :'users/new'
