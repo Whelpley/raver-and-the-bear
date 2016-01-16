@@ -2,21 +2,16 @@
 
 <div class="container">
   <br>
+
+  <div class='error-message'>
+  <h3><%= @error_message if @error_message %></h3>
+  </div>
+
   <form action="/sessions" method="POST">
   <fieldset>
-
   <!-- Form Name -->
   <legend>User Login</legend>
-  <!-- takes optional var @error to relay error msg -->
-  <% if @error %>
-    <div class="errors-wrapper">
-      <span>Login failed:</span>
-      <ul class="errors">
-        <li class="error"><%= @error %></li>
-      </ul>
-    </div>
-  <% end %>
-  <!-- Text input-->
+  <!-- Email input-->
   <div >
     <label for="email">Email Address</label>
     <div >
