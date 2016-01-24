@@ -27,20 +27,24 @@ DONE:
 -seed file with (text) tracks
 -mark up Layout page with CSS for dev (borders!)
 
+1/24/16
+
+
 DOING:
 
+-review structure
 -New user registration
+-User Login/logout
 
 TO DO:
 
 Later project stages:
 (cut and paste up as done)
-
+-rake file shortcut for db:reset
 -write text for views - keep main GameText file
 -flesh out basic Views
--New user registration & login
--Log in/out
-
+-basic CSS styling
+-basic Stats page (indiv user page)
 
 -routing (and cleaning up old routes), with dummy views
 -actual views for pages

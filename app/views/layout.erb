@@ -1,6 +1,3 @@
-<!-- PAGE NEEDS reformatting  -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,43 +15,41 @@
 
   <header>
     <h1>The Raver and the Bear</h1>
-
-
-<!-- make this only appear when user logged in -->
-    <% if session[:id] %>
-    <div id='logout_link'>
-      <a href='/logout'>Log Out</a>
-    </div>
-    <% end %>
+    <h4>A fun game for all!</h4>
 
     <nav>
       <ul>
 <!-- Links that show all the time -->
         <li><a href='/'>Home</a></li>
+<!-- An info page, to be constructed -->
+    <!-- <li><a href='/about'>About</a></li> -->
+<!-- Links that show only If logged in -->
+        <% if session[:id] %>
+          <li>You are logged in, <%= User.find(session[:id]).name %></li>
+          <li><a href='/logout'>Log Out</a></li>
 <!-- Links that show only if Not logged in -->
-        <% unless session[:id] %>
+        <% else %>
           <li>You are not logged in</li>
           <li><a href='/users/new'>Register</a></li>
           <li><a href='/sessions/new'>Log in</a></li>
         <% end %>
-<!-- Links that show only If logged in -->
-        <% if session[:id] %>
-          <li>You are logged in, __put user email here__</li>
-          <li><a href='/logout'>Log Out</a></li>
-        <% end %>
       </ul>
     </nav>
-
   </header>
 
-<!-- things that happen only if logged in: -->
-<!-- Welcome message -->
+<!-- Welcome message for logged In or Out: -->
+<!-- currently redundant with Nav bar -->
     <% if session[:id] %>
     <div class='logged-in'>
-      <p>Welcome, <%= User.find(session[:id]).email %>!</p>
+      <p>Welcome, <%= User.find(session[:id]).name %>!</p>
+    </div>
+    <% else %>
+    <div class='logged-out'>
+      <p>You are not logged in, please register or log in to play!</p>
     </div>
     <% end %>
 
+<!-- Where all those :erbs appear -->
   <div id='erb-box'>
     <%= yield %>
   </div>

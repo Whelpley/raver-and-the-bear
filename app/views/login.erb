@@ -1,39 +1,12 @@
 <!-- PAGE NEEDS reformatting  -->
 
-<div class="container">
-  <br>
+<h1> Login Page </h1>
 
-  <div class='error-message'>
-  <h3><%= @error_message if @error_message %></h3>
-  </div>
+<%= @error if @error %>
 
-  <form action="/sessions" method="POST">
-  <fieldset>
-  <!-- Form Name -->
-  <legend>User Login</legend>
-  <!-- Email input-->
-  <div >
-    <label for="email">Email Address</label>
-    <div >
-    <input id="email" name="email" type="email" required="">
-    </div>
-  </div>
-  <br>
-  <!-- Password input-->
-  <div >
-    <label  for="password_plaintext">Password</label>
-    <div >
-      <input id="password_plaintext" name="password_plaintext" type="password" placeholder="" class="form-control input-md" required="">
-    </div>
-  </div>
-  <br>
-  <!-- Button -->
-  <div >
-    <label  for="register"></label>
-    <div >
-      <button id="login" name="login" class="btn btn-primary">Login</button>
-    </div>
-  </div>
-  </fieldset>
-  </form>
-</div>
+<form method="post" action="/sessions">
+  <input type="text" name="email" placeholder="Email address"><br>
+  <input type="password" name="password" placeholder="Password"><br>
+  <input type="submit" value="Come on inside!">
+</form>
+

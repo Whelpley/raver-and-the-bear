@@ -3,7 +3,7 @@ class CreateTracks < ActiveRecord::Migration
     create_table :tracks do |t|
       t.string :title, :null => false
       t.string :artist
-      # where the "oontz goes"
+      # where the "oontz" goes
       t.string :beats
 
       t.timestamps(null: false)

@@ -1,26 +1,20 @@
 <!-- Form to create new user -->
 <!-- sends to '/users' via Post -->
 
-<!-- FORM NEEDS REVIEW -->
+<%= @error if @error %>
 
-<div id="new_user_form">
+<h1>New User Registration Form</h1>
 
-<div class='error-message'>
-<h3><%= @error_message if @error_message %></h3>
-</div>
-
-<h1>New User Registration</h1>
-
-<!-- legacy code in form, do not understand it all, but I should - remove this when I get it all -->
-<form method="post" action="/users">
-<input type="hidden" name="_method" value="post">
+<form method="POST" action="/users">
+  <label for="user_name_input">
+  <input id="user_name_input" name="user[name]" type="text" placeholder="Your User name">
+  <br>
   <label for="user_email_input">
-  <input id="user_email_input" name="email" type="text" placeholder="Email" required title="Please enter a valid email address.">
+  <input id="user_email_input" name="user[email]" type="text" placeholder="Email" required title="Please enter a valid email address.">
   <br>
   <label for="user_password_input">
-  <input id="user_password_input" name="password" type="password" placeholder="Password" pattern=".{5,15}" required title="Please enter a password between 5 and 15 characters. Do not enter a real passowrd, as it is currently un-encrypted.">
+  <input id="user_password_input" name="password" type="password" placeholder="Password" pattern=".{5,15}" required title="Please enter a password between 5 and 15 characters. ">
   <br>
   <input type="submit" value="Create a new player, player!">
 </form>
 
-</div>
