@@ -1,17 +1,18 @@
 #CLEAR DATABASE BEFORE SEEDING!
 # Hard-coded single set
 
-# Nuke everything - necessary?
+# Nuke everything - is this even necessary?
 # User.destroy_all
 # Track.destroy_all
 # Game.destroy_all
 
 # Will need to .new then .save with real password
-User.create(
+test_user = User.new(
   name: 'Billy',
-  email: 'billy@email.com',
-  password: 'password'
+  email: 'billy@gmail.com',
+  password: '1234'
   )
+test_user.save
 
 # The (5) tracks
 # (currently no ability for user to create tracks)
@@ -32,13 +33,13 @@ Track.create(
 Track.create(
   title: 'Sandstorm',
   artist: 'Darude',
-  beats: 'DuuuuuuuuDUDuDUDuDUDuDUDuDuuuDU,'
+  beats: 'Duuuuuuuu DUDuDUDuDUDuDUDuDuuuDU,'
   )
 
 Track.create(
   title: 'Dub Step Concerto #5',
   artist: 'Skrillex',
-  beats: 'WUB wub WUB WUUUUUUUUUBBBBB'
+  beats: 'Wubba WUB wub WUB WUUUUUUUUUBBBBB Wub'
   )
 
 Track.create(
@@ -47,8 +48,8 @@ Track.create(
   beats: "Don\'t snapchat that duckface"
   )
 
-game = Game.new(
+test_game = Game.new(
   user_id: 1
   )
-game.load_stats
-game.save
+test_game.load_stats
+test_game.save

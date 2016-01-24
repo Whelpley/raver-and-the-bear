@@ -1,29 +1,32 @@
-# require 'bcrypt'
+require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_many :games
 
-  validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  include BCrypt
 
-# Not yet with this stuff
-#     def password
-#     @password ||= BCrypt::Password.new(password_hash)
-#   end
+  validates_uniqueness_of :email
+  validates :password, :name, :email, presence: true, allow_blank: false
 
-#   def password=(new_password)
-#     @password = BCrypt::Password.create(new_password)
-#     self.password_hash = @password
-#   end
+  # Call-backs:
+  # before_save , set password
 
-#   def authenticate(password)
-#     self.password == password
-#   end
+  def password
+    @password ||= BCrypt::Password.new(password_hash)
+  end
 
-# Validations?
+  def password=(new_password)
+    @password = BCrypt::Password.create(new_password)
+    self.password_hash = @password
+  end
 
-  # Call-backs? (running a validation before a thing happens)
+  def authenticate(password)
+    self.password == password
+  end
 
 # Class Methods?
+# stat calls
+# check out errors
+
 
 end

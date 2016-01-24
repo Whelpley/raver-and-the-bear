@@ -1,0 +1,22 @@
+<!-- View for a single user by ID -->
+
+<h2>User Stats</h2>
+
+<% if session[:id] %>
+<p> You are looking at your own profile, <%= @logged_in_as.name %>! </p>
+<% else %>
+<p> You are looking at the profile of: <%= @now_viewing.name %></p>
+<% end %>
+
+<p>---------------</p>
+<p>Name : <%= @now_viewing.name %> </p>
+<p>Email : <%= @now_viewing.email %> </p>
+<p>---------------</p>
+
+
+<p>Stats: getting there! </p>
+
+<p>Edit your profile: coming soon!</p>
+
+<p>Delete your own profile: coming soon as well!</p>
+

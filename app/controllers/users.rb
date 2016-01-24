@@ -6,8 +6,8 @@ end
 
 # GET form to create new user
 get '/users/new' do
-# # if logged in, go to user profile
-# may be redundant
+# if logged in, go to user profile
+# refactor this to use helpers
   if session[:id]
     @user = User.find(session[:id])
     redirect "/users/#{@user.id}"
@@ -21,11 +21,8 @@ end
 # coming here from incoming form on erb :users/new
 post '/users' do
 # create new user
-# not bothering with password encrytion for now
-  @user = User.new(
-    email: params[:email],
-    password: params[:password]
-    )
+  @user = User.new(params[:user])
+  @user.password = params[:password]
 # check if successful save
   if @user.save
     # Log in new user
@@ -35,21 +32,22 @@ post '/users' do
 # otherwise load error message, back to reg form
   else
     session.delete(:id)
-    @error_message = "Sorry, but that email has already been taken."
+# instead: access the Errors attribute of object for @errors
+    @error = "Sorry, something went wrong. Try again, why not!"
     erb :'users/new'
   end
 end
 
 
-#GET user ID profile
+# GET user profile by ID, and their stats
+# Page will look different whether or not logged in
 get '/users/:id' do
   # # the user who is logged in
   @logged_in_as = User.find(session[:id]) if session[:id]
   # the user being looked at
-  @user = User.find(params[:id])
-
+  @now_viewing = User.find(params[:id])
   # go to user info erb
-  erb :'/users/profile'
+  erb :'users/show'
 
 # ADVANCED - check if viewing own page, then show editing options
 #   if @logged_in_as && @logged_in_as.id == @user.id
