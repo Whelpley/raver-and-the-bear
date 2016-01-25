@@ -13,7 +13,7 @@ get '/sessions/new' do
   end
 end
 
-# POST results from login form start session
+# POST results from login form to start session
 post '/sessions' do
   @user = User.find_by email: params[:email]
   if @user && @user.authenticate(params[:password])
@@ -30,8 +30,6 @@ post '/sessions' do
   end
 end
 
-# # log out, return to home page
 get '/logout' do
-  session.delete(:id)
-  redirect '/'
+  log_out
 end

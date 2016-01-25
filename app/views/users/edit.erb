@@ -1,5 +1,6 @@
 <!-- Edit a user's profile  -->
 
+<%= @error if @error %>
 
   <h1>Edit Your Profile</h1>
   <form method="POST" action="/users/<%= @user.id %>">
@@ -7,6 +8,7 @@
     <p>Your User Name: <input type="text" name="user[name]" value="<%= @user.name %>"></p>
     <p>Your Email: <input type="text" name="user[email]" value="<%= @user.email %>"></p>
   <!-- should password entry be required to update password? how? -->
-    <p>Your Password: <input type="text" name="password"></p>
+    <!-- <p>Your Password: <input type="text" name="password"></p> -->
+    <input name="password" type="password" placeholder="Password" pattern=".{5,15}" required title="Please enter a password between 5 and 15 characters. ">
     <input type="submit" value="Update your information" class="button">
   </form>

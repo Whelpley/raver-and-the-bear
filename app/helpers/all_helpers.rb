@@ -6,7 +6,7 @@ helpers do
     @current_user ||= User.where(id: session[:id]).first if session[:id]
   end
 
-  def logged_in
+  def logged_in?
     current_user.nil? == false
   end
 
@@ -14,6 +14,11 @@ helpers do
 # needs testing
   def long_form_date(timestamp)
     timestamp.strftime('%B %e, %Y')
+  end
+
+  def log_out
+    session.delete(:id)
+    redirect '/'
   end
 
 end

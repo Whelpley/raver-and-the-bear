@@ -5,7 +5,7 @@
 <% if session[:id] %>
   <p> You are looking at your own profile, <%= @logged_in_as.name %>
   <p><a href='/users/<%= @logged_in_as.id %>/edit'>Edit your profile</a></p>
-  <p>Delete your own profile: coming soon as well!</p>! </p>
+  <p><a href='/users/<%= @logged_in_as.id %>/delete'>Delete your profile</a></p>
 <% else %>
   <p> You are looking at the profile of: <%= @now_viewing.name %></p>
 <% end %>

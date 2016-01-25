@@ -89,11 +89,25 @@ put '/users/:id' do
   end
 end
 
-# DELETE a user
-# also logs out
-# only allowed if logged in as user
-# other constraints?
-delete 'users/:id' do
+
+# Extra route: get view to confirm user password before deleting account
+get '/users/:id/delete' do
+  @user = User.find(params[:id])
+  # puts @user.name + " is cool"
+  erb :'users/help_line'
+end
+
+# DELETE a user (and log out)
+# only allowed if logged in as user & correct password sent from form
+delete '/users/:id' do
+  @user = User.find(params[:id])
+  if @user.id == session[:id] && @user.authenticate(params[:password])
+    @user.destroy
+    log_out
+  else
+    @error = "Oh no! Something went wrong!"
+    erb :'users/help_line'
+  end
 end
 
 #EDIT
