@@ -3,9 +3,11 @@
 <h2>User Stats</h2>
 
 <% if session[:id] %>
-<p> You are looking at your own profile, <%= @logged_in_as.name %>! </p>
+  <p> You are looking at your own profile, <%= @logged_in_as.name %>
+  <p><a href='/users/<%= @logged_in_as.id %>/edit'>Edit your profile</a></p>
+  <p>Delete your own profile: coming soon as well!</p>! </p>
 <% else %>
-<p> You are looking at the profile of: <%= @now_viewing.name %></p>
+  <p> You are looking at the profile of: <%= @now_viewing.name %></p>
 <% end %>
 
 <p>---------------</p>
@@ -16,7 +18,4 @@
 
 <p>Stats: getting there! </p>
 
-<p>Edit your profile: coming soon!</p>
-
-<p>Delete your own profile: coming soon as well!</p>
 

@@ -9,7 +9,7 @@ class Track < ActiveRecord::Base
 # Class Methods?
 
   def drop_beats
-    "The speakers go:\n#{self.beats}\n#{self.beats}\n#{self.beats}\n"
+    "The speakers go:/n#{self.beats}/n#{self.beats}/n#{self.beats}\n"
   end
 
 end

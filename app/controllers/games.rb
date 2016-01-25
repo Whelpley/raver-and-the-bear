@@ -1,3 +1,5 @@
+# Not all of these will be needed
+
 
 # GET / View all games
 get '/games' do

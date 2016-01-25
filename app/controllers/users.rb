@@ -32,8 +32,7 @@ post '/users' do
 # otherwise load error message, back to reg form
   else
     session.delete(:id)
-# instead: access the Errors attribute of object for @errors
-    @error = "Sorry, something went wrong. Try again, why not!"
+    @error = @user.errors.full_messages
     erb :'users/new'
   end
 end
@@ -61,12 +60,33 @@ get '/users/:id' do
 end
 
 # GET form to update specific user
-# only allowed if logged in as user
+# only allowed if logged in as user - is this the right way to filter?
 get '/users/:id/edit' do
+  @user = User.find(params[:id])
+  if @user.id == session[:id]
+    erb :'/users/edit'
+  else
+    @error = "You don't have permission to edit this user"
+    # needs better redirect
+    redirect '/'
+  end
 end
 
 # UPDATE user from form in above
 put '/users/:id' do
+  user = User.find(params[:id])
+  user.update(params[:user])
+  # need to test if this works!
+  user.password=(params[:password])
+  # check for success
+  if user.save
+    # this won't work - how to send confirmation message?
+    @message = "successful edit!"
+    redirect "/users/#{user.id}"
+  else
+    @error = "failed save! " + user.errors.full_messages
+    erb :'/users/edit'
+  end
 end
 
 # DELETE a user
@@ -77,22 +97,6 @@ delete 'users/:id' do
 end
 
 #EDIT
-
-
-# View all comments by a user
-# need to write this erb
-get '/users/:id/comments' do
-  # @user = User.find(params[:id])
-  # erb :'/users/comments'
-end
-
-# View all posts by a user
-# need to write this erb
-
-get '/users/:id/posts' do
-  # @user = User.find(params[:id])
-  # erb :'/users/posts'
-end
 
 
 
