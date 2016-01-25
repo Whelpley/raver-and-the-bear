@@ -6,3 +6,7 @@ get '/' do
 
 end
 
+# secret path to see the session
+get '/session-viewer' do
+  session.inspect
+end

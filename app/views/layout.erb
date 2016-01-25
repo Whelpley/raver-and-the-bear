@@ -8,7 +8,8 @@
 
   <title>The Raver and the Bear</title>
 
-  <link rel="icon" type="image/jpg" href='doge_favicon.jpg'>
+<!-- need to correct favicon link -->
+<!--   <link rel="icon" type="image/jpg" href='/public/doge_favicon.jpg'> -->
 </head>
 
 <body>
@@ -25,7 +26,9 @@
     <!-- <li><a href='/about'>About</a></li> -->
 <!-- Links that show only If logged in -->
         <% if session[:id] %>
-          <li>You are logged in, <%= User.find(session[:id]).name %></li>
+          <% user = User.find(session[:id]) %>
+          <li>You are logged in, <%= user.name %></li>
+          <li><a href='/users/<%= user.id %>'>Your Profile</a></li>
           <li><a href='/logout'>Log Out</a></li>
 <!-- Links that show only if Not logged in -->
         <% else %>

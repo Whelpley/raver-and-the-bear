@@ -1,0 +1,11 @@
+<!-- Page to confirm user deletion of own account, requires password entry -->
+
+<p>Enter your password to confirm deletion of your account:</p>
+
+<%= @error if @error %>
+
+<form method="POST" action="/users/<%= @user.id %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="text" name="password">
+  <input type="submit" value="Only click me if you're sure!">
+</form>
