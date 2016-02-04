@@ -20,42 +20,48 @@ body {
 /*header box*/
 header {
   border: 2px dashed #363942;
-  margin: 2px;
+  margin: 2em;
+  padding: 1em;
 }
 
 /*navigation bar ( within header)*/
 nav {
   border: 1px dotted #5c832f;
-  margin: 2px;
-
+  margin: 2em;
+  padding: 1em;
 }
 
 /*Messages that only appear IF Session[:id] */
 .logged-in {
   border: 2px dotted blue;
-  margin: 2px;
+  margin: 2em;
+  padding: 1em;
 }
 
 /*Messages that only appear IF !Session[:id] */
 .logged-out {
   border: 2px dotted red;
-  margin: 2px;
+  margin: 2em;
+  padding: 1em;
 }
 
 .error-message {
   border: 2px dotted purple;
-  margin: 2px;
+  margin: 2em;
+  padding: 1em;
 }
 
 /*where all those erbs appear*/
 #erb-box {
   border: 2px dashed #284907;
-  margin: 2px;
+  margin: 2em;
+  padding: 1em;
 }
 
 footer {
   border: 2px dashed #363942;
-  margin: 2px;
+  margin: 2em;
+  padding: 1em;
 
 }
 
