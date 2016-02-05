@@ -8,8 +8,6 @@
 
   <title>The Raver and the Bear</title>
 
-<!-- need to correct favicon link -->
-<!--   <link rel="icon" type="image/jpg" href='/public/doge_favicon.jpg'> -->
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
@@ -27,10 +25,10 @@
 <!-- An info page, to be constructed -->
     <!-- <li><a href='/about'>About</a></li> -->
 <!-- Links that show only If logged in -->
-        <% if session[:id] %>
-          <% user = User.find(session[:id]) %>
-          <li>You are logged in, <%= user.name %></li>
-          <li><a href='/users/<%= user.id %>'>Your Profile</a></li>
+        <% if logged_in? %>
+          <li><a href='/games/new'>New Game!</a></li>
+
+          <li><a href='/users/<%= session[:id] %>'>Your Profile</a></li>
           <li><a href='/logout'>Log Out</a></li>
 <!-- Links that show only if Not logged in -->
         <% else %>
@@ -44,9 +42,9 @@
 
 <!-- Welcome message for logged In or Out: -->
 <!-- currently redundant with Nav bar -->
-    <% if session[:id] %>
+    <% if logged_in? %>
     <div class='logged-in'>
-      <p>Welcome, <%= User.find(session[:id]).name %>!</p>
+      <p>Welcome, <%= current_user.name %>!</p>
     </div>
     <% else %>
     <div class='logged-out'>
@@ -54,13 +52,15 @@
     </div>
     <% end %>
 
+<h3><%= @message if @message %></h3>
+
 <!-- Where all those :erbs appear -->
-  <div id='erb-box'>
+  <main>
     <%= yield %>
-  </div>
+  </main>
 
   <footer>
-    <p>Questions? Comments? Concerns? <a href="mailto:whelpley@gmail.com">Email me</a></p>
+    <p>Questions? Comments? Concerns? <a href="http://www.youtube.com/user/AlanWattsLectures">Seek your truth</a></p>
   </footer>
 
 </body>

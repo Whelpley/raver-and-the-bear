@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration
 
       t.belongs_to :user
 # Player's health score, reduced by Mauls
-      t.integer :health
+      t.integer :health, :default => 3
 # Consecutive dances from the Bear
       t.integer :wiggles, :default => 0
 # number of turns played

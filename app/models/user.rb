@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :password, :name, :email, presence: true, allow_blank: false
 
   # Call-backs:
-  # before_save , set password
+  # before_save , set password ?
 
   def password
     @password ||= BCrypt::Password.new(password_hash)

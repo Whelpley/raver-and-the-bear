@@ -6,17 +6,19 @@
 # get '/games' do
 # end
 
-# # GET / display form to create new Game
-# get '/games/:new' do
-
-# end
+# GET / display form to create new Game
+get '/games/new' do
+  erb :'games/new'
+end
 
 # # POST / create new Game from form
-# post '/games' do
+post '/games' do
+  # define the new Game
+  # game = Game.create
+  # load its Track/s
+# redirect to
 
-# # redirect to
-
-# end
+end
 
 # # GET / View a single Game
 # get '/games/:id' do

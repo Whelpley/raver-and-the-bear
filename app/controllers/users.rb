@@ -1,15 +1,14 @@
 
 #GET list of all users
-# not needed
-get '/users' do
-end
+# (not needed now)
+# get '/users' do
+# end
 
 # GET form to create new user
 get '/users/new' do
 # if logged in, go to user profile
-# refactor this to use helpers
-  if session[:id]
-    @user = User.find(session[:id])
+  if logged_in?
+    @user = current_user
     redirect "/users/#{@user.id}"
 # otherwise show the form
   else
@@ -18,19 +17,18 @@ get '/users/new' do
 end
 
 # CREATE new user
-# coming here from incoming form on erb :users/new
 post '/users' do
 # create new user
   @user = User.new(params[:user])
   @user.password = params[:password]
 # check if successful save
   if @user.save
-    # Log in new user
-    session[:id] = @user.id
+    log_in
     # redirect to user profile
     redirect "users/#{session[:id]}"
 # otherwise load error message, back to reg form
   else
+# just-in-case logout, or not even needed?
     session.delete(:id)
     @error = @user.errors.full_messages
     erb :'users/new'
@@ -41,44 +39,28 @@ end
 # GET user profile by ID, and their stats
 # Page will look different whether or not logged in
 get '/users/:id' do
-  # # the user who is logged in
-  @logged_in_as = User.find(session[:id]) if session[:id]
   # the user being looked at
-  @now_viewing = User.find(params[:id])
+  @user_being_viewed = User.find(params[:id])
   # go to user info erb
   erb :'users/show'
-
-# ADVANCED - check if viewing own page, then show editing options
-#   if @logged_in_as && @logged_in_as.id == @user.id
-#     # Go to own profile edit page
-#     # erb ......
-#   else
-#     # Go to standard view page
-#     erb :'/users/profile'
-#   end
-
 end
 
 # GET form to update specific user
-# only allowed if logged in as user - is this the right way to filter?
 get '/users/:id/edit' do
   @user = User.find(params[:id])
-  if @user.id == session[:id]
+  if logged_in? && @user.id == session[:id]
     erb :'/users/edit'
   else
     @error = "You don't have permission to edit this user"
-    # needs better redirect
-    redirect '/'
+    erb :'errror'
   end
 end
 
-# UPDATE user from form in above
+# UPDATE user info via form
 put '/users/:id' do
   user = User.find(params[:id])
   user.update(params[:user])
-  # need to test if this works!
   user.password=(params[:password])
-  # check for success
   if user.save
     # this won't work - how to send confirmation message?
     @message = "successful edit!"
