@@ -16,6 +16,10 @@ helpers do
     timestamp.strftime('%B %e, %Y')
   end
 
+  def log_in
+    session[:id] = @user.id
+  end
+
   def log_out
     session.delete(:id)
     redirect '/'

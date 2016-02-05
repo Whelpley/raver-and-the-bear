@@ -2,20 +2,23 @@
 
 <h2>User Stats</h2>
 
-<% if session[:id] %>
-  <p> You are looking at your own profile, <%= @logged_in_as.name %>
-  <p><a href='/users/<%= @logged_in_as.id %>/edit'>Edit your profile</a></p>
-  <p><a href='/users/<%= @logged_in_as.id %>/delete'>Delete your profile</a></p>
+
+<% if logged_in? %>
+  <p> You are looking at your own profile, <%= current_user.name %>
+  <p><a href='/users/<%= current_user.id %>/edit'>Edit your profile</a></p>
+  <p><a href='/users/<%= current_user.id %>/delete'>Delete your profile</a></p>
 <% else %>
-  <p> You are looking at the profile of: <%= @now_viewing.name %></p>
+  <p> You are looking at the profile of: <%= @user_being_viewed.name %></p>
 <% end %>
 
 <p>---------------</p>
-<p>Name : <%= @now_viewing.name %> </p>
-<p>Email : <%= @now_viewing.email %> </p>
+<p>Name : <%= @user_being_viewed.name %> </p>
+<p>Email : <%= @user_being_viewed.email %> </p>
 <p>---------------</p>
 
 
+<h3>Stats! </h3>
 <p>Stats: getting there! </p>
+
 
 

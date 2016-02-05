@@ -6,8 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_hash, :null => false
       t.timestamps(null: false)
     end
-    # Check uniqueness of :email
-    # this way improves performance of searching the table
+    # this improves performance of searching the table
     add_index :users, :email, :unique => true
   end
 end

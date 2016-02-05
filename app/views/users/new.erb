@@ -6,11 +6,12 @@
 <h1>New User Registration Form</h1>
 
 <form method="POST" action="/users">
-  <input name="user[name]" type="text" placeholder="Your User name">
+  <input name="user[name]" type="text" placeholder="Your User name" required>
   <br>
-  <input name="user[email]" type="text" placeholder="Email" required title="Please enter a valid email address.">
+  <!-- email address validation is limited; only checks for "x@y"-->
+  <input name="user[email]" type="email" placeholder="Email" required title="Please enter a valid email address.">
   <br>
-  <input name="password" type="password" placeholder="Password" pattern=".{5,15}" required title="Please enter a password between 5 and 15 characters. ">
+  <input name="password" type="password" placeholder="Password" pattern=".{5,15}" required title="Please enter a password between 5 and 15 characters.">
   <br>
   <input type="submit" value="Create a new player, player!">
 </form>
